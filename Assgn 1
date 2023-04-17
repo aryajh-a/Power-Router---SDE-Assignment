@@ -4,7 +4,7 @@
 
 public static int NewCurrent(Queue<Character> OldTask, int current, Queue<Character> NewTask) {
 
-        // Return -1 if any one of the queues are empty
+        // Return -1 if any one of the queues are empty, -1 denotes that none will get the next task
         if (OldTask.isEmpty() || NewTask.isEmpty())
             return -1;
             
@@ -17,9 +17,10 @@ public static int NewCurrent(Queue<Character> OldTask, int current, Queue<Charac
 
         for (int i = 1; i <= current; i++) {
         
-            // If any of the queues get empty, return 0
+            // If any of the queues get empty, return -1
             if (OldTask.isEmpty() || NewTask.isEmpty())
-                return 0;
+                return -1;
+                
             // If the element of old task queue is inactive in new task queue, remove it and
             // increment count if i!=current index
             if (OldTask.peek() != NewTask.peek()) {
